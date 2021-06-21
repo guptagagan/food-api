@@ -1,0 +1,49 @@
+<!-- 
+<nav class="navbar navbar-light bg-warning">
+   <a class="navbar-brand  text-light" routerLink=""> <h5> &nbsp; &nbsp; Back to the search... </h5></a>
+  </nav>  -->
+   <form class="form-inline my-5 my-lg-0"  [formGroup]="searchForm"  >
+    <input class="form-control"  formControlName="searchresult"  type="text" placeholder="Search your food!" aria-label="Search">
+    &nbsp; &nbsp;
+    
+    <!-- <input type="submit"  class="btn btn-outline-secondary my-2 my-sm-0 text-white" value="Search">
+  </form> -->
+  <button type="submit"  class="btn btn-outline-success" (click)="submitForm()" > Search</button>
+</form>
+
+
+<div class="container mt-2 mb-2 card text-secondary shadow bg-dark" *ngFor="let result of searchList" >
+<div class="row">
+    <div class="col-9">
+        <h5 class="text-center"><b>{{result.recipe.label}}</b></h5>
+        <h6><b>Ingredian Lines</b> </h6><div *ngFor="let x of result.recipe.ingredientLines">{{x}} </div>
+
+
+    <h6><b>Health labels </b>- {{result.recipe.healthLabels[0]}},{{result.recipe.healthLabels[1]}},{{result.recipe.healthLabels[2]}},
+      {{result.recipe.healthLabels[3]}} </h6>
+    
+    <h6><b>Calories </b> - {{result.recipe.calories}} </h6>
+    <h6><b>Vitamins</b></h6>
+      {{result.recipe.totalNutrients.VITA_RAE.label}} - {{result.recipe.totalNutrients.VITA_RAE.quantity}} {{result.recipe.totalNutrients.VITA_RAE.unit}} 
+        <br>  {{result.recipe.totalNutrients.VITB12.label}}- {{result.recipe.totalNutrients.VITB12.quantity}} {{result.recipe.totalNutrients.VITB12.unit}}
+        <br>{{result.recipe.totalNutrients.VITC.label}}-     {{result.recipe.totalNutrients.VITC.quantity}}     {{result.recipe.totalNutrients.VITC.unit}}
+        <!-- <br>{{result.recipe.totalNutrients.VITD.label}}-{{result.recipe.totalNutrients.VITD.quantity}}{{result.recipe.totalNutrients.VITD.unit}}
+        <br>{{result.recipe.totalNutrients.TOCPHA.label}} -{{result.recipe.totalNutrients.TOCPHA.quantity}} {{result.recipe.totalNutrients.TOCPHA.unit}} 
+      <br> -->
+
+    </div>
+
+    <div class="col-3">
+        <img [src]="result.recipe.image" class=" img-fluid img-thumbnail rounded float-right" height="300" width="300"
+            alt="Not available">
+           <br>
+           
+    <a class="text-decoration-none" [href]="result.recipe.url">
+      go to the website...
+       <i class="bi bi-arrow-right"></i>
+     </a>
+ 
+  </div>
+
+</div>
+</div>
